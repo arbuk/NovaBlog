@@ -1,0 +1,114 @@
+/* GENEL AYARLAR */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f0; /* Açık krem rengi, kağıt hissiyatı */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+/* BAŞLIK (HEADER) STİLLERİ */
+.site-header {
+    background-color: #5d4037; /* Koyu kahverengi */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin-bottom: 5px;
+}
+
+.site-header nav a {
+    color: #ffc107; /* Sarı, vurgulu renk */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.site-header nav a:hover {
+    text-decoration: underline;
+}
+
+/* KİTAP YORUMLARI LİSTESİ & STATİK İÇERİK */
+.posts-list, .review-detail, .static-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* LİSTE ELEMANLARI */
+.blog-post {
+    border: 1px solid #d7ccc8;
+    background-color: #fff8e1; /* Çok açık sarı */
+    padding: 18px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    transition: transform 0.3s;
+}
+
+.blog-post:hover {
+    transform: translateY(-3px); /* Hafif yukarı kayma efekti */
+}
+
+.blog-post h3 {
+    color: #4e342e;
+    margin-top: 0;
+}
+
+.blog-post h3 small {
+    font-size: 0.7em;
+    color: #795548;
+}
+
+.post-meta {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #9e9e9e;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    color: #c62828; /* Kırmızı, dikkat çekici */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* DETAY SAYFASI STİLLERİ */
+.review-detail h2 {
+    color: #4e342e;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.review-detail .back-link {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #5d4037;
+    text-decoration: none;
+}
+
+/* ALT BÖLÜM (FOOTER) STİLLERİ */
+.site-footer {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    background-color: #5d4037;
+    color: white;
+    font-size: 0.9em;
+}
