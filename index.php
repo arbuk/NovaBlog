@@ -1,5 +1,7 @@
 <?php
 
+session_start(); 
+
 $books = array(
     1 => [
         'title' => 'Suç ve Ceza',
@@ -98,6 +100,86 @@ $books = array(
         'date' => '04.10.2025',
         'summary' => 'On dokuzuncu yüzyıl Fransası\'nda yasaklanmış, platonik bir aşkın mektuplarla örülmüş hüzünlü dramı. Romantizmin acıtan güzelliği.',
         'full_review' => 'Balzac\'ın bu eseri, genç Félix\'in kendisinden yaşça büyük, evli ve mutsuz Henriette de Mortsauf\'a duyduğu saf ve idealize edilmiş aşkı anlatır. Roman, aşkın imkansızlığı ve saflığı üzerine bir ağıttır. Dönemin toplumsal baskısı ve ahlaki değerleri, bu aşkın sadece mektuplarda ve hayallerde kalmasına neden olur. Duygusallığı ve karakterlerin iç dünyasının zenginliği, eseri dramatik bir klasik yapar.'
+    ],
+    15 => [
+        'title' => 'Simyacı', 'author' => 'Paulo Coelho', 'date' => '2025-12-12',
+        'summary' => 'Hazinesini arayan çoban Santiago\'nun ruhani yolculuğu. Kişisel efsanenizin peşinden gitmenin ve evrenin işaretlerini okumanın felsefesi.',
+        'full_review' => 'Coelho\'nun en ünlü eseri, basit bir macera hikayesi gibi görünse de, derin bir motivasyon kaynağıdır. Okuyucuyu, hayallerinin peşinden gitmeye teşvik eder. Okunması kolay, ancak etkisi büyük bir modern klasiktir.'
+    ],
+    16 => [
+        'title' => 'Otomatik Portakal', 'author' => 'Anthony Burgess', 'date' => '2025-12-10',
+        'summary' => 'Genç Alex\'in şiddet dolu dünyası ve bu şiddeti devlet eliyle ortadan kaldırma girişimi. Özgür irade, ahlak ve toplumsal kontrol üzerine sert bir distopya.',
+        'full_review' => 'Burgess\'ın yarattığı kendine özgü dil (Nadsat) başta zorlayıcı olsa da, kitabın temel felsefesi evrenseldir: Bir insana iyiliği zorla dayatmak, onun kötülük yapma özgürlüğünü elinden almak mıdır? İnsan doğasını ve devletin sınırlarını sorgulayan sarsıcı bir deneyim.'
+    ],
+    17 => [
+        'title' => '1984', 'author' => 'George Orwell', 'date' => '2025-12-08',
+        'summary' => 'Büyük Birader\'in gözetimindeki totaliter Okyanusya rejiminde yaşayan Winston Smith\'in isyan çabası. Distopik edebiyatın en önemli eseri.',
+        'full_review' => 'Orwell\'ın bu eseri, iktidarın dili, tarihi ve düşünceyi nasıl manipüle edebileceğini çarpıcı biçimde gösterir. "Yenikonuş" ve "Düşünce Polisi" gibi kavramlar, özgürlüğün ne kadar değerli ve kırılgan olduğunu hatırlatan, geleceği öngören bir klasiğidir.'
+    ],
+    18 => [
+        'title' => 'Cesur Yeni Dünya', 'author' => 'Aldous Huxley', 'date' => '2025-12-05',
+        'summary' => 'Duygusal bağların, sanatın ve geçmişin yasaklandığı, genetik olarak sınıflara ayrılmış mükemmel bir gelecekteki huzursuzluk ve isyan.',
+        'full_review' => 'Huxley, zevk ve haz yoluyla kontrol edilen bir distopya sunar. İnsanların mutsuzluğu unutmaları için sürekli "Soma" adlı bir uyuşturucu kullanmaları gerekir. Kitap, bireyselliğin ve gerçek acının değerini sorgulayan, felsefi açıdan derin bir eserdir.'
+    ],
+    19 => [
+        'title' => 'Yüzyıllık Yalnızlık', 'author' => 'Gabriel Garcia Marquez', 'date' => '2025-12-02',
+        'summary' => 'Buendia ailesinin yedi kuşağını kapsayan, Macondo kasabasının kuruluş ve çöküş destanı. Büyülü gerçekçilik akımının en görkemli örneği.',
+        'full_review' => 'Marquez, bu eserde mitleri, tarihi ve kişisel kaderleri birleştirerek eşsiz bir dünya yaratmıştır. Kitap, yalnızlığın, aşkın ve zamanın döngüsel doğasını keşfeder. Edebiyatı seven herkesin mutlaka okuması gereken, yoğun ve büyülü bir romandır.'
+    ],
+    20 => [
+        'title' => 'Kürk Mantolu Madonna', 'author' => 'Sabahattin Ali', 'date' => '2025-11-28',
+        'summary' => 'İçine kapanık Raif Efendi\'nin gençliğinde Berlin\'de karşılaştığı, ressam Maria Puder\'e duyduğu imkansız aşkın ve hayal kırıklığının hikayesi.',
+        'full_review' => 'Sabahattin Ali\'nin eseri, Türk edebiyatının en derin psikolojik romanlarından biridir. Raif Efendi karakteri, çekingenliği ve duygusal zenginliğiyle okuyucuyu derinden etkiler. Aşk, hayal kırıklığı ve insanın kendi içine çekilme arzusunu mükemmel anlatır.'
+    ],
+    21 => [
+        'title' => 'Kayıp Tanrılar Ülkesi', 'author' => 'Ahmet Ümit', 'date' => '2025-11-25',
+        'summary' => 'Berlin\'deki Bergama Müzesi\'nde işlenen gizemli bir cinayet ve Komiser Nevzat\'ın izleri Antik Yunan mitolojisine kadar süren soruşturması.',
+        'full_review' => 'Ahmet Ümit, polisiye kurgusunu, tarih ve mitoloji bilgisiyle harmanlayarak okuyucuyu hem heyecanlı bir maceraya hem de Antik Yunan tanrılarının dünyasına götürüyor. Sürükleyici temposu ve kültürel derinliğiyle başarılı bir Türk polisiyesi örneğidir.'
+    ],
+    22 => [
+        'title' => 'Körlük', 'author' => 'José Saramago', 'date' => '2025-11-22',
+        'summary' => 'Tüm ülkeyi saran beyaz bir körlük salgını sonrası medeniyetin çöküşü. İnsanlığın vahşileşmesini ve bir kadının gözünden umudu anlatır.',
+        'full_review' => 'Saramago, karakterlere isim vermeyerek hikayeyi evrenselleştirir. Ahlaki pusulanın kayboluşunu ve hayatta kalma mücadelesini sarsıcı bir şekilde anlatırken, karanlığın ortasında insan ruhunun dayanıklılığını gösterir.'
+    ],
+    23 => [
+        'title' => 'Fahrenheit 451', 'author' => 'Ray Bradbury', 'date' => '2025-11-19',
+        'summary' => 'Kitapların yakıldığı distopik bir gelecekte yaşayan itfaiyeci Guy Montag\'ın mesleğini sorgulamasını ve yeraltı direnişine katılmasını konu alır.',
+        'full_review' => 'Bradbury\'nin bu eseri, bilginin, eleştirel düşüncenin ve okuma alışkanlığının yok edilmesinin sonuçlarını güçlü bir dille işler. Kitap, televizyonun ve yüzeysel eğlencenin toplumu nasıl uyuşturabileceği konusunda günümüzde bile geçerli olan önemli bir uyarıdır.'
+    ],
+    24 => [
+        'title' => 'Tutunamayanlar', 'author' => 'Oğuz Atay', 'date' => '2025-11-16',
+        'summary' => 'Selim Işık\'ın intiharının ardındaki gizemi çözmeye çalışan Turgut Özben\'in, modern toplumda kendine yer bulamayan aydınların iç dünyasına yaptığı yolculuk.',
+        'full_review' => 'Türk edebiyatının en karmaşık ve zeki eserlerinden biridir. Postmodern teknikleri, ironiyi ve derin bir varoluşsal sorgulamayı harmanlar. Tutunamayanlar, sadece bir roman değil, okuyucuyu kendi kimliğini ve toplumdaki yerini sorgulamaya iten bir deneyimdir.'
+    ],
+    25 => [
+        'title' => 'Gönülçelen', 'author' => 'Vladimir Nabokov', 'date' => '2025-11-13',
+        'summary' => 'Belleğin güvenilmezliği, sanat ve takıntılı aşk temalarını işleyen, Humbert Humbert\'in genç bir kıza duyduğu yıkıcı tutkunun anlatıldığı tartışmalı bir başyapıt.',
+        'full_review' => 'Nabokov\'un dili kullanmadaki ustalığı ve edebi oyunları inanılmazdır. Kitap, etik sınırları zorlarken, aynı zamanda anlatıcının manipülatif ve çarpıtılmış bakış açısıyla okuyucuyu rahatsız eder. Yüzeysel bir hikayeden çok, dehanın ve deliliğin karmaşık bir incelemesidir.'
+    ],
+    26 => [
+        'title' => 'Deniz Feneri', 'author' => 'Virginia Woolf', 'date' => '2025-11-10',
+        'summary' => 'Ramsay ailesinin yazlık evinde geçen, iki farklı zaman diliminde (on yıl arayla) karakterlerin iç dünyalarını, bilinç akışı tekniğiyle aktaran modernist roman.',
+        'full_review' => 'Woolf\'un bu eseri, olay örgüsünden çok, karakterlerin düşünce ve duygularına odaklanır. Işık, deniz feneri ve zaman gibi imgeler, varoluşun gelip geçiciliğini ve anlık deneyimlerin derinliğini sembolize eder. Modernist edebiyatın en önemli ve lirik eserlerinden biridir.'
+    ],
+    27 => [
+        'title' => 'Dokuzuncu Hariciye Koğuşu', 'author' => 'Peyami Safa', 'date' => '2025-11-07',
+        'summary' => 'Bedenin ve ruhun çaresizliği... Hastane koridorlarının ve karşılıksız bir aşkın gölgesinde büyüyen hasta bir gencin otobiyografik çığlığı. Yalnızlık ve kıskançlığın romanı.',
+        'full_review' => 'Peyami Safa\'nın kendi yaşamından izler taşıyan bu eser, bir gencin fiziksel hastalığıyla birlikte yaşadığı duygusal karmaşayı inanılmaz bir içtenlikle anlatıyor. Hastalığı bir felsefi sorgulama aracı olarak kullanışı, eseri Türk edebiyatının en psikolojik romanlarından biri yapıyor.'
+    ],
+    28 => [
+        'title' => 'Sineklerin Tanrısı', 'author' => 'William Golding', 'date' => '2025-11-04',
+        'summary' => 'Uçak kazasında ıssız bir adaya düşen bir grup okul çocuğunun, medeniyetten uzaklaştıkça nasıl vahşileşip ilkel içgüdülerine yenik düştüğünü anlatan alegorik roman.',
+        'full_review' => 'Golding, bu eserde insan doğasının karanlık ve yıkıcı yüzünü sorgular. Çocukların kurmaya çalıştığı düzenin kısa sürede kaosa dönüşmesi, yazarın kötülüğün dışsal değil, insanın özünde var olduğu tezini destekler.'
+    ],
+    29 => [
+        'title' => 'Anna Karenina', 'author' => 'Leo Tolstoy', 'date' => '2025-11-01',
+        'summary' => 'Rus toplumunun ahlak kuralları ve beklentileri arasında tutkulu ve trajik bir aşk yaşayan Anna Karenina ile Levin\'in sade hayat arayışının anlatıldığı epik roman.',
+        'full_review' => 'Tolstoy\'un başyapıtı, sadece bir aşk hikayesi değil, aynı zamanda 19. yüzyıl Rus toplumunun sosyal, felsefi ve ekonomik yapısının geniş bir panoramasıdır. Evlilik, ahlak, şehvet ve maneviyat gibi temaları derinlemesine inceler. Edebiyat tarihinin en büyük eserlerinden biridir.'
+    ],
+    30 => [
+        'title' => 'Palto', 'author' => 'Nikolay Gogol', 'date' => '2025-10-29',
+        'summary' => 'Petersburg\'da yaşayan ve tüm varlığını yeni bir paltoya adamış, ezik bir memur olan Akakiy Akakiyeviç\'in trajikomik hikayesi. "Küçük adam" temasının başlangıcı.',
+        'full_review' => 'Gogol\'un bu novellası, hem komik hem de yürek burkucudur. Palto, Akakiy için sadece bir giysi değil, sosyal statü ve varoluşun kendisidir. Rus edebiyatının birçok büyük yazarını etkilemiş, sıradan bir insanın hayalleri ve yıkımı üzerine derin bir taşlamadır.'
     ]
 );
 
@@ -125,6 +207,7 @@ if ($requested_id > 0) {
 } 
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +218,7 @@ if ($requested_id > 0) {
     <title>Kitap Yorumlama Siteniz | <?php 
         if ($page_type == 'detail') { 
             echo $current_book['title'] . ' Yorumu';
-        } elseif ($page_type == 'static' AND $requested_page == 'about') { // AND operatörü kullanıldı
+        } elseif ($page_type == 'static' AND $requested_page == 'about') { 
             echo 'Hakkımızda';
         } elseif ($page_type == 'static' AND $requested_page == 'contact') {
             echo 'İletişim';
@@ -145,15 +228,28 @@ if ($requested_id > 0) {
     ?></title>
     <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
 
-    <header class="site-header">
-        <h1>Nova Blog</h1>
-        <nav>
-            <a href="index.php">Ana Sayfa</a>
-            <a href="index.php?page=about">Hakkımızda</a> 
-            <a href="index.php?page=contact">İletişim</a>
+
+<header class="site-header">
+    <h1>Nova Blog</h1>
+    <nav>
+        <a href="index.php">Ana Sayfa</a>
+        <a href="index.php?page=about">Hakkımızda</a> 
+        <a href="index.php?page=contact">İletişim</a>
+        
+        <?php
+        
+        
+        if (isset($_SESSION['user_id'])) {
+            
+            echo '<a href="logout.php" class="auth-button logout-button">Çıkış Yap</a>';
+        } else {
+            
+            echo '<a href="login.php" class="auth-button login-button">Giriş Yap / Kayıt Ol</a>';
+        }
+        ?>
         </nav>
+</header>
     </header>
 
     <main class="container">
@@ -219,6 +315,7 @@ if ($requested_id > 0) {
     <footer class="site-footer">
         <p>&copy; <?php echo date('Y'); ?> Nova Blog </p>
     </footer>
+<script src="script.js"></script> 
 
 </body>
 </html>
