@@ -1,14 +1,13 @@
 <?php
-// Oturumu başlat ve güvenlik kontrolü yap
+
 session_start();
 
-// Kullanıcı giriş yapmadıysa, login sayfasına yönlendir
+
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-// Buraya kullanıcının mevcut bilgilerini çekme kodları gelecek.
 $kullanici_adi = htmlspecialchars($_SESSION['username']);
 
 ?>
@@ -92,4 +91,7 @@ $kullanici_adi = htmlspecialchars($_SESSION['username']);
         </div>
     </main>
 </body>
+</html>
+</body>
+
 </html>
