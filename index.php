@@ -183,30 +183,20 @@ $books = array(
     ]
 );
 
-
-
-
-
-
 $requested_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $requested_page = isset($_GET['page']) ? $_GET['page'] : 'list';
 
 $current_book = null;
 $page_type = 'list';
 
-
 if ($requested_id > 0) {
- 
     if (isset($books[$requested_id])) { 
         $current_book = $books[$requested_id];
         $page_type = 'detail';
     }
 } elseif ($requested_page == 'about' OR $requested_page == 'contact') { 
-
     $page_type = 'static';
 } 
-
-
 
 ?>
 
@@ -215,7 +205,7 @@ if ($requested_id > 0) {
 <head>
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitap Yorumlama Siteniz | <?php 
+    <title>Nova Blog | <?php 
         if ($page_type == 'detail') { 
             echo $current_book['title'] . ' Yorumu';
         } elseif ($page_type == 'static' AND $requested_page == 'about') { 
@@ -228,10 +218,12 @@ if ($requested_id > 0) {
     ?></title>
     <link rel="stylesheet" href="style.css"> 
 </head>
-
+<body>
 
 <header class="site-header">
     <h1>Nova Blog</h1>
+   <header class="site-header">
+
     <nav>
         <a href="index.php">Ana Sayfa</a>
         <a href="index.php?page=about">Hakkımızda</a> 
@@ -239,83 +231,95 @@ if ($requested_id > 0) {
         
         <?php
         
-        
         if (isset($_SESSION['user_id'])) {
             
-            echo '<a href="logout.php" class="auth-button logout-button">Çıkış Yap</a>';
+            echo '<div class="user-menu" style="display: inline-block;">';
+            echo '<a href="panel.php" class="auth-button profile-button" style="background-color: #d4ac7d; color: white;">👤 ' . htmlspecialchars($_SESSION['username']) . '</a>';
+            echo '<a href="logout.php" class="auth-button logout-button" style="margin-left: 10px;">Çıkış</a>';
+            echo '</div>';
         } else {
             
             echo '<a href="login.php" class="auth-button login-button">Giriş Yap / Kayıt Ol</a>';
         }
         ?>
-        </nav>
+    </nav>
 </header>
-    </header>
+</header>
 
-    <main class="container">
+<main class="container">
+    
+    <?php if ($page_type == 'list'): ?>
         
-        <?php if ($page_type == 'list'): ?>
+        <section class="posts-list" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
             
-            <section class="posts-list">
-                
-                <?php foreach ($books as $id => $book):  ?>
-                    <article class="blog-post">
-                        <h3><?php echo $book['title']; ?> - <small><?php echo $book['author']; ?></small></h3>
-                        <p class="post-meta">Yorum Tarihi: <span><?php echo $book['date']; ?></span></p>
-                        <p class="post-summary"><?php echo $book['summary']; ?></p>
+            <?php foreach ($books as $id => $book):  ?>
+                <article class="book-card" style="width: 300px; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: #fff; transition: 0.3s; position: relative;">
+                    
+                    <div class="book-card-cover"></div>
+
+                    <div class="book-content">
+                        <h3 style="margin-top:0;"><?php echo $book['title']; ?></h3>
+                        <p style="font-style: italic; color: #666; font-size: 0.9em;"><?php echo $book['author']; ?></p>
+                        <p class="post-meta" style="font-size: 0.8em; color: #999;">Yorum Tarihi: <?php echo $book['date']; ?></p>
                         
-                        <a href="index.php?id=<?php echo $id; ?>" class="read-more">Yorumun Tamamını Oku &raquo;</a>
-                    </article>
-                <?php endforeach; ?>
+                        <div class="book-details" style="opacity:0; transition: 0.3s; transform: translateY(10px);">
+                            <p class="post-summary" style="font-size: 0.85em; color: #444;"><?php echo $book['summary']; ?></p>
+                            <a href="index.php?id=<?php echo $id; ?>" class="read-more" style="color: #b8860b; font-weight: bold; text-decoration: none;">Yorumun Tamamını Oku &raquo;</a>
+                        </div>
+                    </div>
+                </article>
+            <?php endforeach; ?>
 
-            </section>
+        </section>
+        
+    <?php elseif ($page_type == 'detail'): ?>
+        
+        <section class="review-detail">
+            <p><a href="index.php" class="back-link" style="text-decoration: none; color: #b8860b;">&laquo; Tüm Yorumlara Geri Dön</a></p>
             
-        <?php elseif ($page_type == 'detail'): ?>
+            <h2><?php echo $current_book['title']; ?></h2>
+            <p class="author-info">Yazar: <strong><?php echo $current_book['author']; ?></strong></p>
+            <p class="post-meta">Yorum Tarihi: <span><?php echo $current_book['date']; ?></span></p>
             
-            <section class="review-detail">
-                <p><a href="index.php" class="back-link">&laquo; Tüm Yorumlara Geri Dön</a></p>
-                
-                <h2><?php echo $current_book['title']; ?></h2>
-                <p class="author-info">Yazar: **<?php echo $current_book['author']; ?>**</p>
-                <p class="post-meta">Yorum Tarihi: <span><?php echo $current_book['date']; ?></span></p>
-                
-                <hr>
-                
-                <div class="full-content">
-                    <p>**Tam Yorumumuz:**</p>
-                    <p><?php echo $current_book['full_review']; ?></p>
-                </div>
+            <hr style="border: 0.5px solid #eee;">
+            
+            <div class="full-content">
+                <p><strong>Tam Yorumumuz:</strong></p>
+                <p style="line-height: 1.6;"><?php echo $current_book['full_review']; ?></p>
+            </div>
 
-            </section>
-            
-        <?php elseif ($page_type == 'static' AND $requested_page == 'about'): ?>
-            
-            <section class="static-content">
-                <h2>Hakkımızda</h2>
-                <p>Biz, tutkulu kitap okuyucularından oluşan bir ekibiz. Amacımız, en sevdiğimiz kitaplar hakkında dürüst ve ilham verici yorumlar sunmaktır.</p>
-                <p>İyi okumalar!</p>
-                <p><a href="index.php">Ana Sayfaya Geri Dön</a></p>
-            </section>
-            
-        <?php elseif ($page_type == 'static' AND $requested_page == 'contact'): ?>
-            
-            <section class="static-content">
-                <h2>İletişim</h2>
-                <p>Bize yorum, öneri ve kitap tavsiyeleriniz için ulaşabilirsiniz:</p>
-                <ul>
-                    <li>E-posta: info@NovaBlog.com</li>
-                    <li>Sosyal Medya: @NovaBlog</li>
-                </ul>
-            </section>
-            
-        <?php endif; ?>
+        </section>
+        
+    <?php elseif ($page_type == 'static' AND $requested_page == 'about'): ?>
+        
+        <section class="static-content">
+            <h2>Hakkımızda</h2>
+            <p>Biz, tutkulu kitap okuyucularından oluşan bir ekibiz. Amacımız, en sevdiğimiz kitaplar hakkında dürüst ve ilham verici yorumlar sunmaktır.</p>
+            <p>İyi okumalar!</p>
+            <p><a href="index.php" style="color: #b8860b;">Ana Sayfaya Geri Dön</a></p>
+        </section>
+        
+    <?php elseif ($page_type == 'static' AND $requested_page == 'contact'): ?>
+        
+        <section class="static-content">
+            <h2>İletişim</h2>
+            <p>Bize yorum, öneri ve kitap tavsiyeleriniz için ulaşabilirsiniz:</p>
+            <ul>
+                <li>E-posta: info@NovaBlog.com</li>
+                <li>Sosyal Medya: @NovaBlog</li>
+            </ul>
+        </section>
+        
+    <?php endif; ?>
 
-    </main>
+</main>
 
-    <footer class="site-footer">
-        <p>&copy; <?php echo date('Y'); ?> Nova Blog </p>
-    </footer>
+<footer class="site-footer" style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #ddd;">
+    <p>&copy; <?php echo date('Y'); ?> Nova Blog </p>
+</footer>
+
 <script src="script.js"></script> 
 
 </body>
 </html>
+
