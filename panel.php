@@ -1,20 +1,18 @@
 <?php
-// Oturumu başlat
+
 session_start();
 
-// GÜVENLİK KONTROLÜ
+
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-// Veritabanı Bağlantısını dahil et
 include 'db_baglanti.php'; 
 
 $user_id = $_SESSION['user_id'];
 $user_data = [];
 
-// Not: Lütfen buradaki 'id' sütun adını, veritabanınızdaki doğru ID sütun adıyla değiştirin. 
 $query = "SELECT kullanici_adi, e_posta, parola FROM kullanicilar WHERE kullanici_adi = ?"; 
 $stmt = mysqli_prepare($baglanti, $query);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -23,10 +21,10 @@ $result = mysqli_stmt_get_result($stmt);
 
 if ($result && $row = mysqli_fetch_assoc($result)) {
     $user_data = $row;
-    // Katılım tarihini istediğiniz formatta gösterelim
+    
     $join_date = isset($user_data['kayit_tarihi']) ? date('d F Y', strtotime($user_data['kayit_tarihi'])) : 'Bilinmiyor';
     
-    // Yorum ve Takipçi sayıları artık gözükmeyeceği için bu değişkenleri göstermiyoruz.
+    
 } else {
     session_destroy();
     header("Location: login.php");
@@ -46,7 +44,7 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
     <title><?php echo $current_username; ?> Profil Sayfası</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
-        /* Ana Stil - Sayfa Yapısı */
+        
         .profile-container {
             max-width: 1100px;
             margin: 20px auto;
@@ -56,19 +54,19 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        /* Başlık Alanı (Ad, Kullanıcı Adı, Avatar) */
+        
         .profile-header {
             display: flex;
             align-items: center;
             padding: 30px;
-            background-color: #f7f3ed; /* Krem Tonu */
+            background-color: #f7f3ed; 
             border-bottom: 1px solid #e0d9d1;
         }
 
         .profile-avatar {
             width: 80px;
             height: 80px;
-            background-color: #b8860b; /* Örnek avatar rengi */
+            background-color: #b8860b; 
             border-radius: 50%;
             margin-right: 20px;
             border: 3px solid #ffffff;
@@ -87,7 +85,7 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
             margin-top: 5px;
         }
         
-        /* İstatistikler ve Ayarlar Butonu */
+    
         .profile-stats-and-actions {
             padding: 20px 30px;
             border-bottom: 1px solid #e0d9d1;
@@ -137,7 +135,7 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
             background-color: #b8860b;
         }
         
-        /* Navigasyon Sekmeleri (Kitaplık, İncelemeler vs.) */
+        
         .profile-nav {
             border-bottom: 1px solid #e0d9d1;
             padding: 0 30px;
@@ -165,7 +163,7 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
             border-bottom: 3px solid #b8860b;
         }
         
-        /* Ana İçerik Alanı */
+        
         .profile-content {
             padding: 30px;
         }
@@ -181,12 +179,26 @@ $current_username = htmlspecialchars($user_data['kullanici_adi']);
         .user-activity {
             min-height: 200px;
         }
+
+        body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        </header>
+<header class="site-header" style="background: #4a413d; padding: 15px 0; margin-bottom: 20px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+        <a href="index.php" style="color: #f7f3ed; text-decoration: none; font-size: 24px; font-weight: bold; font-family: 'Georgia', serif;">Nova Blog</a>
+        
+        <nav>
+            <a href="index.php" style="color: #f7f3ed; text-decoration: none; margin-right: 20px; font-size: 14px;">🏠 Ana Sayfaya Dön</a>
+            <a href="logout.php" style="color: #ffb7b7; text-decoration: none; font-size: 14px;">Çıkış Yap</a>
+        </nav>
+    </div>
+</header>
 
     <main class="container">
         <div class="profile-container">
